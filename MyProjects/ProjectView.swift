@@ -17,7 +17,6 @@ struct ProjectView: View {
 				.renderingMode(.original)
 				.resizable()
 				.aspectRatio(contentMode: .fit)
-				.frame(maxWidth: 100)
 			Text("Hello, World!")
 		}
 		.padding()

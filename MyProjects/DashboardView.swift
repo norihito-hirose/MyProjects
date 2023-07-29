@@ -15,7 +15,7 @@ struct DashboardView: View {
 
 	var body: some View {
 		let columns: [GridItem] = [
-			GridItem(.adaptive(minimum: 160))
+			GridItem(.adaptive(minimum: 200))
 		]
 		NavigationStack {
 			ScrollView {
@@ -25,7 +25,7 @@ struct DashboardView: View {
 							Text("Hello world!")
 						} label: {
 							ProjectView(project: project)
-							.frame(minHeight: 200)
+								.frame(minHeight: 200)
 						}
 					}
 					.onDelete(perform: deleteProjects)
