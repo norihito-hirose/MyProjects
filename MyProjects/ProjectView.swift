@@ -9,15 +9,20 @@
 import SwiftUI
 
 struct ProjectView: View {
-	let project: Project
+	@Bindable var project: Project
 	
     var body: some View {
 		VStack(spacing: 10) {
-			Image(systemName: "checkmark.bubble.fill")
-				.renderingMode(.original)
-				.resizable()
-				.aspectRatio(contentMode: .fit)
-			Text("Hello, World!")
+			HStack(spacing: 10, content: {
+				Image(systemName: "checkmark.bubble.fill")
+					.renderingMode(.original)
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(width: 72)
+				TextField("", text: $project.name)
+					.font(.title)
+			})
+			Spacer()
 		}
 		.padding()
     }
