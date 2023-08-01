@@ -23,6 +23,7 @@ struct ContentView: View {
 						Text("Dashboard")
 					}
 				}
+				.collapsible(false)
 				Section("Projects") {
 					ForEach(projects) { project in
 						NavigationLink {

@@ -14,33 +14,32 @@ struct DashboardView: View {
 	@Query private var projects: [Project]
 
 	var body: some View {
-		let columns: [GridItem] = [
-			GridItem(.adaptive(minimum: 200))
-		]
+		let columns: [GridItem] = Array(repeating: .init(.adaptive(minimum: 200)), count: 1)
 		NavigationStack {
-			ScrollView {
-				LazyVGrid(columns: columns, spacing: 10, content: {
+			ScrollView() {
+				LazyVGrid(columns: columns, content: {
 					ForEach(projects) { project in
 						NavigationLink {
 							Text("Hello world!")
 						} label: {
 							ProjectView(project: project)
-								.frame(minHeight: 200)
+								.frame(minWidth: 100, minHeight: 200)
 						}
 					}
 					.onDelete(perform: deleteProjects)
 				})
-				.toolbar {
+				.padding()
+			}
+		}
+		.toolbar {
 #if os(iOS)
-					ToolbarItem(placement: .navigationBarTrailing) {
-						EditButton()
-					}
+			ToolbarItem(placement: .navigationBarTrailing) {
+				EditButton()
+			}
 #endif
-					ToolbarItem {
-						Button(action: addItem) {
-							Label("Add Item", systemImage: "plus")
-						}
-					}
+			ToolbarItem {
+				Button(action: addItem) {
+					Label("Add Item", systemImage: "plus")
 				}
 			}
 		}
